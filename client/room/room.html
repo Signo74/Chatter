@@ -1,0 +1,23 @@
+<template name="ChatRoom">
+  <h4 class="padded-l">Welcome to {{name}}</h4>
+  <div class="chat overflow">
+    {{#each messages}}
+      {{> Message}}
+    {{/each}}
+  </div>
+
+  <form class="new-message fixed-bottom">
+    <input name="message" type="text" placeholder="Your message.">
+    <button type="submit" class="btn btn-success">Enter</button>
+  </form>
+</template>
+
+<template name="Message">
+  <div>
+    <span>
+      {{date}}
+      {{username}}:
+      <strong>{{message}}</strong>
+    </span>
+  </div>
+</template>
