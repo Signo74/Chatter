@@ -1,9 +1,15 @@
 <template name="ChatRoom">
-  <h4 class="padded-l">Welcome to {{name}}</h4>
-  <div class="chat overflow">
-    {{#each messages}}
-      {{> Message}}
-    {{/each}}
+  <div class="row">
+    <div class="col-xs-12">
+          <label class="padded-l">Welcome to {{name}}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      {{#each messages}}
+        {{> Message}}
+      {{/each}}
+    </div>
   </div>
 
   <form class="new-message fixed-bottom">
@@ -13,11 +19,15 @@
 </template>
 
 <template name="Message">
-  <div>
-    <span>
+  <div class="row">
+    <div class="col-xs-2">
       {{date}}
-      {{username}}:
-      <strong>{{message}}</strong>
-    </span>
+    </div>
+    <div class="col-xs-2">
+      <label>{{username}}:</label>
+    </div>
+    <div class="col-xs-6">
+      <label>{{message}}</label>
+    </div>
   </div>
 </template>
