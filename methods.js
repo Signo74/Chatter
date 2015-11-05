@@ -16,13 +16,17 @@ Meteor.methods({
     var formattedDate = formatDate();
     var formattedTime = formatTime();
     var username = 'anonymous';
+    var email = '';
+    var fullDate = new Date();
 
     if (Meteor.user() != null) {
       username = Meteor.user().emails[0].address;
       username = username.slice(0, username.indexOf('@'));
+
+      email = Meteor.user().emails[0].address;
     }
 
-    Messages.insert({date: formattedDate, time: formattedTime, username: username, message: message, room: roomId});
+    Messages.insert({fullDate: fullDate, date: formattedDate, time: formattedTime, username: username, email:email, message: message, room: roomId});
   }
 })
 

@@ -1,23 +1,32 @@
 <template name="Lobby">
-  <h1>Welcome to Chatter!</h1>
-  <h4>Create a Chat room or choose one to start chatting.</h4>
-  <form class="addChatRoom">
-    <input name="name" type="text" placeholder="Name">
-    <button class="btn btn-primary" type="submit">Create</button>
-  </form>
-
-  <ul>
-    {{#each chatRooms}}
-      {{> ChatRoomsItem}}
-    {{/each}}
-  </ul>
+  <article>
+    <section class="row">
+      <div class="col-xs-12">
+        <h1>Welcome to Chatter!</h1>
+        <h4>Create a Chat room or choose one to start chatting.</h4>
+        <form class="addChatRoom">
+          <input name="name" type="text" placeholder="Name">
+          <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-xs-12">
+        {{#each chatRooms}}
+          {{> ChatRoomsItem}}
+        {{/each}}
+      </div>
+    </div>
+  </article>
 </template>
 
 <template name="ChatRoomsItem">
-  <li>
-    <span>
-      <label>{{name}}</label>
+  <section class="row">
+    <div class="col-xs-1">
       <button class="btn btn-success" title="Join Chat Room" value={{_id}}>Join</button>
-    </span>
-  </li>
+    </div>
+    <div class="col-xs-11">
+      <label>{{name}}</label>
+    </div>
+  </section>
 </template>
