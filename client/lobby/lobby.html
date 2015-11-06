@@ -2,11 +2,11 @@
   <article>
     <section class="row">
       <div class="col-xs-12">
-        <h1>Welcome to Chatter!</h1>
-        <h4>Create a Chat room or choose one to start chatting.</h4>
-        <form class="addChatRoom">
-          <input name="name" type="text" placeholder="Name">
-          <button class="btn btn-primary" type="submit">Create</button>
+        <form class="addChatRoom input-group">
+          <input name="name" type="text" class="form-control" placeholder="Create new or join one.">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Create</button>
+          </span>
         </form>
       </div>
     </section>
@@ -22,11 +22,8 @@
 
 <template name="ChatRoomsItem">
   <section class="row">
-    <div class="col-xs-1">
-      <button class="btn btn-success" title="Join Chat Room" value={{_id}}>Join</button>
-    </div>
-    <div class="col-xs-11">
-      <label>{{name}}</label>
+    <div class="col-xs-12">
+      <button class="joinRoom btn btn-success col-xs-12" title="Join Chat Room" value={{_id}}>Join {{name}}</button>
     </div>
   </section>
 </template>

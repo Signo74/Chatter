@@ -5,7 +5,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-3">
+      {{> Lobby}}
+    </div>
+    <div class="col-xs-9">
+      <form class="addUserToRoom input-group">
+        <input id="userSearch" name="userSearch" type="text" class="form-control userSearch" placeholder="Search for a user" value={{userSearchTerm}}>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </span>
+      </form>
+      <div>
+        <ul>
+          {{#each users}}
+            {{> userRow}}
+          {{/each}}
+        </ul>
+      </div>
       {{#each messages}}
         {{#if isCurrentUser}}
           {{> MyMessage}}
@@ -13,13 +29,18 @@
           {{> Message}}
         {{/if}}
       {{/each}}
+      <div class="row fixed-bottom padded-sides">
+        <div class="col-xs-12">
+          <form class="input-group new-message">
+            <input name="message" type="text" class="form-control" placeholder="Your message.">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-success">Enter</button>
+            </span>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-
-  <form class="new-message fixed-bottom">
-    <input name="message" type="text" placeholder="Your message.">
-    <button type="submit" class="btn btn-success">Enter</button>
-  </form>
 </template>
 
 <template name="MyMessage">

@@ -5,3 +5,7 @@ Meteor.publish('chat_rooms', function () {
 Meteor.publish('messages', function () {
   return Messages.find({});
 });
+
+Meteor.publish("usernames", function(argument){
+  return Meteor.users.find();
+});

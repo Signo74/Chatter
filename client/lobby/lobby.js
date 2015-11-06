@@ -21,8 +21,9 @@ Template.Lobby.events({
     }
 
     Meteor.call('craeteChatRoom', name, isPublic);
+    event.target.name.value = '';
   },
-  'click .btn-success': function(event) {
+  'click .joinRoom': function(event) {
     event.preventDefault();
     var roomId = event.target.value;
     Session.set('room', roomId);

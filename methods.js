@@ -20,9 +20,7 @@ Meteor.methods({
     var fullDate = new Date();
 
     if (Meteor.user() != null) {
-      username = Meteor.user().emails[0].address;
-      username = username.slice(0, username.indexOf('@'));
-
+      username = Meteor.user().username;
       email = Meteor.user().emails[0].address;
     }
 
