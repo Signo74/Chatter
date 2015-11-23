@@ -3,7 +3,7 @@
     <section class="row">
       <div class="col-xs-12">
         <form class="addChatRoom input-group">
-          <input name="name" type="text" class="form-control" placeholder="Create new or join one.">
+          <input name="name" type="text" class="form-control" placeholder="Room name">
           <span class="input-group-btn">
             <button class="btn btn-primary" type="submit">Create</button>
           </span>
@@ -23,7 +23,15 @@
 <template name="ChatRoomsItem">
   <section class="row">
     <div class="col-xs-12">
-      <button class="joinRoom btn btn-success col-xs-12" title="Join Chat Room" value={{_id}}>Join {{name}}</button>
+      <button class="joinRoom btn btn-left btn-success col-xs-12"
+       title="Join Chat Room" value={{_id}}>
+       {{name}}
+       {{#if Template.subscriptionsReady}}
+         <span class="badge">
+           {{new_messages}}
+         </span>
+       {{/if}}
+      </button>
     </div>
   </section>
 </template>

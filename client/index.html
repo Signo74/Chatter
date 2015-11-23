@@ -1,6 +1,14 @@
-<template name="Chatter">
+<template name="Jabber">
   {{> Navigation}}
   <main id="content" class="container-fluid">
-    {{> yield}}
+    {{> Template.dynamic template=common}}
+    <dic class="row">
+      <section id="sideSection" class="hidden-xs col-sm-3">
+        {{> Template.dynamic template=contacts}}
+      </section>
+      <section class="col-xs-12 col-sm-9">
+        {{> Template.dynamic template=content}}
+      </section>
+    </dic>
   </main>
 </template>

@@ -1,14 +1,6 @@
 <template name="ChatRoom">
   <div class="row">
     <div class="col-xs-12">
-          <label class="padded-l">Welcome to {{name}}</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-3">
-      {{> Lobby}}
-    </div>
-    <div class="col-xs-9">
       <form class="addUserToRoom input-group">
         <input id="userSearch" name="userSearch" type="text" class="form-control userSearch" placeholder="Search for a user" value={{userSearchTerm}}>
         <span class="input-group-btn">
@@ -58,7 +50,8 @@
       </div>
     </div>
     <div class="media-right">
-      <a><img src="/img/64x64.svg" alt="Default Icon"></a>
+      <!-- <a><img src="/img/64x64.svg" alt="Default Icon"></a> -->
+      <a><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
     </div>
   </section>
 </template>
@@ -67,12 +60,12 @@
 <template name="Message">
   <section class="media">
     <div class="media-left">
-      <a><img src="/img/64x64.svg" alt="Default Icon"></a>
+      <a><span class="glyphicon glyphicon-user"></span></a>
     </div>
     <div class="media-body">
       <div class="row">
         <div class="col-xs-11 message-header">
-            {{username}}: {{time}}
+            <a>{{username}}</a>: {{time}}
         </div>
       </div>
       <div class="row">

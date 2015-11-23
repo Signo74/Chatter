@@ -1,4 +1,5 @@
 Meteor.methods({
+  // Chat room related methods.
   craeteChatRoom: function(name, isPublic) {
     var username = '';
     if (Meteor.user() != null) {
@@ -25,6 +26,53 @@ Meteor.methods({
     }
 
     Messages.insert({fullDate: fullDate, date: formattedDate, time: formattedTime, username: username, email:email, message: message, room: roomId});
+  },
+  updateUserRooms: function(room) {
+    var roomsActivity = [];
+    var existingIndex;
+    roomsActivity = Meteor.user().activity;
+
+    for (var i = 0 ; i < roomsActivity.length ; i++) {
+      if (roomsActivity[i].room === room) {
+        existingIndex = i;
+        break;
+      }
+    }
+
+    if (existingIndex != undefined) {
+      roomsActivity[existingIndex].lastSeen = new Date();
+    } else {
+      var activity = {
+        room: room,
+        lastSeen: new Date()
+      }
+
+      roomsActivity.push(activity);
+    }
+
+    Meteor.users.update({_id:Meteor.user()._id}, {$set: {activity:roomsActivity}})
+  },
+  // Messages related methods
+  returnUnreadMessagesPerRoom: function(room) {
+    var lastSeenArr = Meteor.user().activity;
+    var lastSeen;
+    var count;
+
+    if (lastSeenArr != undefined) {
+      for (var i = 0 ; i < lastSeenArr.length ; i++) {
+        if (lastSeenArr[i].room === room) {
+          count = Messages.find({fullDate: { $lt:lastSeenArr[i].lastSeen}, room:room}).count();
+          return count;
+        }
+      }
+    } else {
+      return;
+    }
+  },
+  // User related methods
+  updateUserData: function(userData) {
+    
+    Meteor.users.update({_id:Meteor.user()._id},{})
   }
 })
 

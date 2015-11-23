@@ -41,11 +41,14 @@ p {
   margin-bottom: 5px;
 }
 
-
 .row {
   padding-bottom: 2px;
 }
 
 .padded-sides {
   padding: 0 10px;
+}
+
+.btn-left {
+  text-align: left;
 }

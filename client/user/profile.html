@@ -1,0 +1,44 @@
+<template name="UserProfile">
+  <article class="row">
+    <div class="col-xs-12">
+      <label>Username: {{currentUser.username}}</label>
+    </div>
+  </article>
+  <article class="row">
+    <form id="userProfile" class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <input class="form-control" name="displayName" placeholder="Display Name"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <input class="form-control" name="name" placeholder="Full Name"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <textarea class="form-control" name="description" placeholder="Short Descritption"></textarea>
+        </div>
+      </div>
+      <label>Email(s):</label>
+      <section id="emails">
+        {{#if Template.subscriptionsReady}}
+          {{#each emails}}
+            {{> EmailInput}}
+          {{/each}}
+        {{/if}}
+      <button class="btn btn-success newMail"><span class="glyphicon glyphicon-plus"></span></button>
+      </section>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </article>
+</template>
+
+<template id="emailInput" name="EmailInput">
+  <div class="row">
+    <div class="col-xs-12">
+      <input class="form-control" value="{{address}}" placeholder="Insert your email here"/>
+    </div>
+  </div>
+</template>
